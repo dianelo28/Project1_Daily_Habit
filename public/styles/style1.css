@@ -97,21 +97,21 @@ p {
   position: fixed; 
   bottom: 0; 
   opacity: .5;
-  -webkit-transition: all 0.5s ease;
+ /* -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  transition: all 0.5s ease;*/
 }
      
- .footer:hover {
+/* .footer:hover {
   border-radius: 50%;
   rotate(360deg);
   -moz-transform: rotate(360deg);
   -o-transform: rotate(360deg);
   -ms-transform: rotate(360deg);
   transform: rotate(360deg);
-}
+}*/
 
 
  #welcome:hover{

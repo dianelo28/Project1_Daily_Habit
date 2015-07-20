@@ -20,7 +20,8 @@ app.use(express.static(__dirname + '/public'));
 //mongoose/models
 
 var mongoose = require('mongoose');
-var db = require ('./models/models');
+var Goal = require ('./models/goal');
+var User = require('./models/user');
 mongoose.connect('mongodb://localhost/workout');
 
 
@@ -33,7 +34,7 @@ app.use(session({
 	saveUninitialized: true,
 	resave: true,
 	secret: 'SuperSecretCookie',
-	cookie: { maxAge: 60000}
+	cookie: { maxAge: 60000 }
 }));
 
 //middleware to manage sessions
@@ -46,7 +47,7 @@ app.use('/', function(req,res, next){
 
 	//finds user currently logged in based on 'session.userId'
 	req.currentUser = function (callback) {
-		db.User.findOne({_id: req.session.userId}, function(err,user){
+		User.findOne({_id: req.session.userId}, function(err,user){
 			req.user = user;
 			callback(null, user);
 		});
@@ -67,14 +68,6 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/views/signup.html');
 });
 
-//sign up page
-
-// app.get('/signup', function (req,res){
-// 	res.send('coming soon!');
-// });
-
-//main page
-
 app.get('/main', function (req, res) {
 	res.sendFile(__dirname + '/public/views/index.html');
 });
@@ -83,52 +76,25 @@ app.get('/main', function (req, res) {
 
 app.get('/profile', function (req,res) {
 	//finds user currently logged in
-	req.currentUser(function(err,user) {
-		if (err){
-			console.log('Uh OH!', err);
-			res.status(500).send(err);
+	req.currentUser(function (err,user) {
+		if (user) {
+			res.sendFile(__dirname + '/public/views/index.html');
 		} else {
-			res.send('Welcome ' + user.email);
+			res.redirect('/');
 		}
 	});
 });
 
-//goals index
+//authorization routes
 
-app.get('/goals', function (req,res) {
-	db.Goal.find(function(err, goals){
-		if (err) {
-			console.log('ERROR!', err);
-			res.status(500).send(err);
-		} else {
-		res.json(goals);
-		}
-	});
-});
-
-//get goal by _id number
-
-app.get('/goals/:id', function (req,res){
-	var targetId = req.params.id;
-	db.Goal.findOne({_id: targetId}, function(err, foundGoal){
-		if (err) {
-			console.log('Someone call Batman!', err);
-			res.status(500).send(err);
-		} else {
-		res.json(foundGoal);
-		}
-	});
-});
-
-//user sign up form submission
-
-app.post('/users', function(req,res){
-
-	//grab user data from params(req.body)
+//create new user with secure password
+app.post('/users', function (req,res){
 	var newUser = req.body.user;
+	// res.json(newUser);
 
-	//create new user with secure pw
-	db.User.createSecure(newUser.email, newUser.password, function(err,user){
+	User.createSecure(newUser, function (err,user){
+	// 	//log in user immediately when created
+		req.login(user);
 		res.redirect('/main');
 	});
 });
@@ -139,39 +105,99 @@ app.post('/login', function(req,res){
 	var userData = req.body.user;
 
 	//call authenticate to check if pw is correct
-	db.User.authenticate(userData.email, userData.password, function(err,user){
+	User.authenticate(userData.email, userData.password, function(err,user){
 	
 		//saves user id to session
 		req.login(user);
 
 		//redirect to page
-		res.redirect('/profile')
+		res.redirect('/main');
 	});
 });
 
-//create new goal
+app.get('/logout', function (req,res){
+	req.logout();
+	res.redirect('/');
+})
 
-app.post('/goals', function (req,res){
-	var goal = new db.Goal ({
+
+
+//API routes
+
+//show current user
+
+app.get('/api/users/current', function (req, res){
+	req.currentUser(function (err, user){
+		res.json(user);
+	});
+});
+
+
+//get goal by _id number
+
+app.get('/api/goals/:id', function (req,res){
+	var targetId = req.params.id;
+	Goal.findOne({_id: targetId}, function(err, foundGoal){
+		if (err) {
+			console.log('Someone call Batman!', err);
+			res.status(500).send(err);
+		} else {
+		res.json(foundGoal);
+		}
+	});
+});
+
+
+//create new goal for current user
+
+app.post('/api/goals/current/goals', function (req,res){
+	//creating a new goal with input from site
+	var newGoal = new Goal ({
 		goal: req.body.goal,
 		description: req.body.description
 	});
 
-	goal.save(function(err, goal){
+	//save the new goal
+	newGoal.save();
+
+	//find current user
+	req.currentUser(function(err,user){
+		//embed new goal into user
+		user.goals.push(newGoal);
+		//save user (and new log)
+		user.save();
+		//respond with new log
+		res.json(newGoal);
+	});
+});
+
+//goals index
+
+app.get('/api/goals', function (req,res) {
+	Goal.find(function(err, goals){
 		if (err) {
-			console.log('Ruh Oh!', err);
+			console.log('ERROR!', err);
 			res.status(500).send(err);
 		} else {
-		res.json(goal);
+		res.json(goals);
 		}
+	});
+});
+
+//create a new goal
+
+app.post('/api/goals', function(req,res){
+	var newGoal = new Goal ({
+		goal: req.body.goal,
+		description: req.body.description
 	});
 });
 
 //update or edit a goal
 
-app.put('/goals/:id', function (req,res) {
+app.put('/api/goals/:id', function (req,res) {
 	var targetId = (req.params.id)
-	db.Goal.findOne({_id:targetId}, function (err,foundGoal) {
+	Goal.findOne({_id:targetId}, function (err,foundGoal) {
 
 	foundGoal.goal = req.body.goal || foundGoal.goal;
 	foundGoal.description = req.body.description || foundGoal.description;
@@ -189,9 +215,9 @@ app.put('/goals/:id', function (req,res) {
 
 //delete goal
 
-app.delete('/goals/:id', function(req,res){
+app.delete('/api/goals/:id', function(req,res){
 	var targetId = (req.params.id);
-	db.Goal.findOneAndRemove({_id: targetId}, function(err,deletedPost){
+	Goal.findOneAndRemove({_id: targetId}, function(err,deletedPost){
 		if (err) {
 			console.log('You have issues!', err);
 			res.status(500).send(err);

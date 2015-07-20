@@ -4,10 +4,10 @@ $(document).ready(function(){
 
 	var goalTemplate = _.template($('#goalTemplate').html());
 	
-//get goals from db and render onto page
+// get goals from db and render onto page
 
 $.ajax({
-	url:'/goals',
+	url:'/api/goals',
 	type:'GET',
 	success: function(data){
 		var goals = data;
@@ -21,20 +21,6 @@ $.ajax({
 	}
 });
 
-//sign up a new user
-
-// $('#sign-up-form').on('submit', function(event){
-
-// 	var newUser = {
-// 		email:
-// 	}
-
-// 	$.ajax({
-// 		url:'/users',
-// 		type: 'POST',
-// 	});
-// });
-
 //add a new goal
 
 $('#post-goal').on('click', function(event){
@@ -44,7 +30,7 @@ $('#post-goal').on('click', function(event){
 	}
 
 	$.ajax({
-		url:'/goals',
+		url:'/api/goals',
 		type: 'POST',
 		data: newGoal,
 		success: function(data){
@@ -62,7 +48,7 @@ $(document).on('click', '.editButton', function(event){
 	goalId = $($(this).closest('.list')).attr('data-id');
 
 	$.ajax({
-		url:'/goals/' + goalId,
+		url:'/api/goals/' + goalId,
 		type:'GET',
 		success: function(res) {
 			$('#editGoal').val(res.goal);
@@ -77,7 +63,7 @@ $('#submitEdit').on('click', function(event){
 		description: $('#editDescription').val()
 	}
 	$.ajax({
-		url:'/goals/' + goalId,
+		url:'/api/goals/' + goalId,
 		type:'PUT',
 		data: goal,
 		success: function(data){
@@ -95,7 +81,7 @@ $('#deleteGoal').on('click', function(event){
 	$(goalId).remove();
 
 	$.ajax({
-		url:'/goals/' + goalId,
+		url:'/api/goals/' + goalId,
 		type:'DELETE',
 		success: function(data){
 			$('#goals-list-' + goalId).remove();

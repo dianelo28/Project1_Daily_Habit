@@ -1,38 +1,35 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	bcrypt = require('bcrypt'),
-	salt = bcrypt.genSaltSync(10);
-
-//set Goal Model
-
-var GoalSchema = new Schema({
-	goal: String,
-	description: String
-})
+	salt = bcrypt.genSaltSync(10),
+	Goal = require('./goal');
 
 //set User Schema
 
 var UserSchema = new Schema({
+	firstName: String,
+	lastName: String,
 	email: String,
 	passwordDigest: String,
-	name: String,
 	goal: {type: Schema.Types.ObjectId, ref:'Goal'}
 });
 
 //create a new user with secure hashed password
-UserSchema.statics.createSecure = function(email, password, callback){
+UserSchema.statics.createSecure = function(userData, callback){
 	//'this' references the schema
 	// stored into another variable since the context will change in nested callbacks
 	var that = this;
 
 	//hash password user enters at sign up
 	bcrypt.genSalt(function (err,salt){
-		bcrypt.hash(password, salt, function(err,hash){
+		bcrypt.hash(userData.password, salt, function(err,hash){
 			console.log(hash);
 
 			//create the new user (save to db) with hashed password
 			that.create({
-				email: email,
+				firstName: userData.firstName,
+				lastName: userData.lastName,
+				email: userData.email,
 				passwordDigest: hash
 			}, callback);
 		});
@@ -62,10 +59,8 @@ UserSchema.methods.checkPassword = function (password){
 	return bcrypt.compareSync(password, this.passwordDigest);
 };
 
-//create Goal and User Models
+//create User Model
 
-var Goal = mongoose.model('Goal', GoalSchema);	
 var User = mongoose.model('User', UserSchema);
 
-module.exports.Goal = Goal;
-module.exports.User = User;
+module.exports = User;
