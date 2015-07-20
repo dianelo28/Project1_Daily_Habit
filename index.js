@@ -84,7 +84,12 @@ app.get('/main', function (req, res) {
 app.get('/profile', function (req,res) {
 	//finds user currently logged in
 	req.currentUser(function(err,user) {
-		res.send('Welcome ' + user.email);
+		if (err){
+			console.log('Uh OH!', err);
+			res.status(500).send(err);
+		} else {
+			res.send('Welcome ' + user.email);
+		}
 	});
 });
 
@@ -92,7 +97,12 @@ app.get('/profile', function (req,res) {
 
 app.get('/goals', function (req,res) {
 	db.Goal.find(function(err, goals){
+		if (err) {
+			console.log('ERROR!', err);
+			res.status(500).send(err);
+		} else {
 		res.json(goals);
+		}
 	});
 });
 
@@ -101,7 +111,12 @@ app.get('/goals', function (req,res) {
 app.get('/goals/:id', function (req,res){
 	var targetId = req.params.id;
 	db.Goal.findOne({_id: targetId}, function(err, foundGoal){
+		if (err) {
+			console.log('Someone call Batman!', err);
+			res.status(500).send(err);
+		} else {
 		res.json(foundGoal);
+		}
 	});
 });
 
@@ -143,7 +158,12 @@ app.post('/goals', function (req,res){
 	});
 
 	goal.save(function(err, goal){
-		res.json(goal)
+		if (err) {
+			console.log('Ruh Oh!', err);
+			res.status(500).send(err);
+		} else {
+		res.json(goal);
+		}
 	});
 });
 
@@ -152,14 +172,17 @@ app.post('/goals', function (req,res){
 app.put('/goals/:id', function (req,res) {
 	var targetId = (req.params.id)
 	db.Goal.findOne({_id:targetId}, function (err,foundGoal) {
-		console.log("this is foundGoal");
-		console.log(foundGoal);
 
 	foundGoal.goal = req.body.goal || foundGoal.goal;
 	foundGoal.description = req.body.description || foundGoal.description;
 
 		foundGoal.save(function(err,savedGoal){
+			if (err) {
+				console.log('HELP!', err);
+				res.status(500).send(err);
+			} else {
 			res.json(savedGoal);
+			}
 		});
 	});
 });
@@ -169,7 +192,12 @@ app.put('/goals/:id', function (req,res) {
 app.delete('/goals/:id', function(req,res){
 	var targetId = (req.params.id);
 	db.Goal.findOneAndRemove({_id: targetId}, function(err,deletedPost){
+		if (err) {
+			console.log('You have issues!', err);
+			res.status(500).send(err);
+		} else {
 		res.json(deletedPost);
+		}
 	});
 });
 

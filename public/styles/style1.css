@@ -12,7 +12,7 @@
 
 #smart{
   text-align: left;
-  background-color: #E5CBFF; 
+  background: url('http://www.fishercreative.com/data/photos/32_1trail_running_mountain_running_teton_outdoor_research.jpg'); 
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -23,7 +23,7 @@
 }
 
 #page2{
-  background: url('http://businessingmag.com/wp/wp-content/uploads/2014/08/inspiring-business-quotes.jpg');
+  background: url("http://weheartwebsites.com/htn/wp-content/uploads/2014/08/banner.jpg");
   text-align: left;
   background-repeat: no-repeat;
   background-size: cover;
@@ -35,7 +35,9 @@
 }
 
 #change{
-  opacity: .7;
+  opacity: .6;
+  background-color: black;
+  color: white;
   margin: 0;
   position: absolute;
   top: 50%;
@@ -64,7 +66,8 @@ h4{
 
 p::first-letter { 
     font-size: 200%;
-    color: #8A2BE2;
+    color: #0000CC;
+    font-weight: bold;
 }
 
 p {
@@ -91,15 +94,39 @@ p {
 }
 
 .footer { 
-	position: fixed; 
-	bottom: 0; 
-	opacity: .5;
- }
+  position: fixed; 
+  bottom: 0; 
+  opacity: .5;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+     
+ .footer:hover {
+  border-radius: 50%;
+  rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+
 
  #welcome:hover{
   opacity: 1;
  }
 
+#sell{
+  text-align: left;
+  margin-top: 200px;
+ }
+
  #sign-up-form{
   max-width: 800px;
  }
+
+b{
+  color:green;
+}
