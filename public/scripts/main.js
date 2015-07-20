@@ -16,7 +16,7 @@ $.get('api/users/current', function(user){
 	$list.append($(goalTemplate(goal)));
 
 	});
-}),
+});
 	
 //add a new goal for current user
 

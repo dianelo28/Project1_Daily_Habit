@@ -22,7 +22,13 @@ app.use(express.static(__dirname + '/public'));
 var mongoose = require('mongoose');
 var Goal = require ('./models/goal');
 var User = require('./models/user');
-mongoose.connect('mongodb://localhost/workout');
+
+mongoose.connect(
+  process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/workout' // plug in the db name you've been using
+);
+// mongoose.connect('mongodb://localhost/workout');
 
 
 //set view engine for server-side templating
@@ -65,10 +71,7 @@ app.use('/', function(req,res, next){
 //info
 
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/public/views/signup.html');
-});
-
-app.get('/main', function (req, res) {
+	console.log(req.session.userId);
 	res.sendFile(__dirname + '/public/views/index.html');
 });
 
@@ -228,6 +231,5 @@ app.delete('/api/goals/:id', function(req,res){
 });
 
 // listen on port 3000
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000);
   console.log('server started on localhost:3000');
-});
