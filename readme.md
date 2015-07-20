@@ -2,18 +2,18 @@
 <br>
 
 <ul>Core Requirements finished so far:</ul>
-	<li>Express API</li>
-	<li>RESTful Routes</li>
-	<li>AJAX</li>
-	<li>jQuery</li>
-	<li>Templating</li>
-	<li>Authentication (ONLY sign up and login)</li>
+	- Express API
+	- RESTful Routes
+	- AJAX
+	- jQuery
+	- Templating
+	- Authentication (ONLY sign up and login)
 
 <ul>Working on</ul>
-	<li>linking two mongodb models together</li>
-	<li>sign out/sessions/authorization</li>
-	<li>data validation</li>
-	<li>still some UI/UX changes I want to make</li>
+	- linking two mongodb models together
+	- sign out/sessions/authorization
+	- data validation
+	- still some UI/UX changes I want to make
 
 
 
