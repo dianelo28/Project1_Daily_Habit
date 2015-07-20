@@ -1,0 +1,105 @@
+#page1{
+  background: url("http://www.sicfitscottsdale.com/wp-content/uploads/2012/05/motivation.png");
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  background-attachment:fixed;
+  overflow: hidden;
+}
+
+#smart{
+  text-align: left;
+  background-color: #E5CBFF; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  background-attachment:fixed;
+  overflow: hidden;
+}
+
+#page2{
+  background: url('http://businessingmag.com/wp/wp-content/uploads/2014/08/inspiring-business-quotes.jpg');
+  text-align: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  background-attachment:fixed;
+  overflow: hidden;
+}
+
+#change{
+  opacity: .7;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: 50%;
+  transform: translate(-50%, -50%)
+
+}
+
+#smart{
+  height:100vh;
+  width:100vw;
+}
+
+h1{
+  font-size: 23px;
+}
+
+h2{
+  font-size: 20px;
+}
+
+h4{
+  font-size: 15px;
+}
+
+p::first-letter { 
+    font-size: 200%;
+    color: #8A2BE2;
+}
+
+p {
+  font-size: 20px;
+}
+
+#smartDef{
+  opacity: .7;
+  background-color: white;
+  margin-top: 50px;
+  border: 3px double;
+  border-radius: 50px;
+}
+
+#smartDef:hover{
+  opacity: 1;
+}
+
+#welcome{
+	opacity: 0.5;
+	border: 1px white;
+	max-height: 100px;
+	max-width: 700px;
+}
+
+.footer { 
+	position: fixed; 
+	bottom: 0; 
+	opacity: .5;
+ }
+
+ #welcome:hover{
+  opacity: 1;
+ }
+
+ #sign-up-form{
+  max-width: 800px;
+ }

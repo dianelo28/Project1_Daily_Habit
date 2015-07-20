@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Motivate Me!</title>
+	<!-- //bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
+	<!-- stylesheet -->
+	<link type="text/css" rel="stylesheet" href="/styles/style1.css">   
+	<!--fontawesome for icons--> 
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+	<body>
+
+		<div class='container-fluid' id='page1'>
+			<div class='well container col-sm-6 col-sm-offset-3'id='change'>
+				<h2>Are you looking to make an improvement in your life?  If you don't know where to start or need a little extra motivation, Motivate Me is the perfect tool for you! Scroll down to find out why!<h2>
+			</div>
+		</div>
+
+
+
+		<div class='container-fluid' id='smart'>
+			<div class='container'id='smartDef'>
+				<h1>It has been scientifically shown that by setting SMART goals, you are taking the first step in making your goal a reality.</h1>
+				<h2>What is a SMART goal?</h2>
+				<p>Specific: State exactly what you want to achieve.  Can you break a larger task down into smaller items?</p>
+				<p>Measureable: Establish clear definitions to help you measure if you're reaching your goal.</p>
+				<p>Attainable: Describe your goals using action verbs and outline the exact steps you will take to accomplish your goal.</p>
+				<p>Realistic: Give yourself the opportunity to succeed by setting goals you'll actually be able to accomplish.  Be sure to consider obstacles you may need to overcome.</p>
+				<p>Timely: How much time do you have to complete the task?  Decide exactly when you'll start and finish your goal.</p>
+			</div>
+		</div>
+
+		<div class="container">	
+			<div class="col-sm-7 col-sm-offset-4">
+				<div class="footer well" id='welcome'>
+					<h2>If you're ready to make a change...</h2>
+
+					<button type="button" class="btn btn-default btn-xs btn pull-right signUpButton" data-toggle="modal" data-target="#sign-up" role="button">Sign Up!</button>
+					<button type="button" class="btn btn-default btn-xs btn pull-right tryButton" data-toggle="modal" data-target="#try" role="button">Try it out!</button>
+
+
+				</div>
+			</div>
+		</div>	
+
+		<div class='container-fluid' id='page2'>
+			<h1>How will the Motivate Me page help you reach your goal?</h1>
+				<ol>
+					<li>When you sign up, you pick what you want to achieve</li>
+					<li>Based off your selection, we curate daily workouts and recipies to help you reach your goal</li>
+					<li>Why aren't you numbered?!</li>
+				</ol>
+		</div>
+
+		<div class="modal fade bs-example-modal-lg" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		       <div class="modal-dialog modal-lg">
+		         <div class="modal-content">
+
+		           <div class = "container"> <!--//container for modal-->
+
+		             <form class="form-horizontal" id="sign-up-form" method="post" action="/users"> <!--//modal form name-->
+		              <div class="form-group text-center">
+		                 <h2> Sign up today!</h2> <!--//header for sign up form-->
+		                 </div>
+		                       <div class="modal-body">
+		                         <div class="bold col-sm-4">
+		                         Email
+		                         </div>
+
+		                         <div class="margin-top-20">
+		                           <input type="text" name='user[email]' class="form-control" placeholder="Email" autofocus>
+		                         </div>
+
+		                         <div class="bold margin-top-20">
+		                         Password
+		                         </div>
+		                         <div class="margin-top-20">
+		                           <input type="password" name='user[password]' class="form-control" placeholder="Password">
+		                         </div>
+		                       </div>
+
+	                       <div class="form-group">
+	                         <input type="submit" value="Sign Up" class="btn btn-primary">
+	                       </div>
+		           </form>  
+		           </div><!--// container for modal-->
+		         </div>
+		       </div>
+		     </div><!--end of sign up modal-->
+
+  <!--  // bootstrap jquery -->   
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+ <!--  //bootstrap javascript -->
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
+
+<!-- //underscore template library -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script> 
+
+ <!-- //my script -->
+ <script type="text/javascript" src="scripts/script1.js"></script>
+
+	</body>
+</html>

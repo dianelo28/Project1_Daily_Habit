@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Motivate Me!</title>
+    <!-- //bootstrap -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'> 
+    <!-- stylesheet -->
+    <link type='text/css' rel='stylesheet' href='styles/style.css'>   
+    <!--fontawesome for icons--> 
+    <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <!--google font  palanquin dark-->
+    <link href='http://fonts.googleapis.com/css?family=Palanquin+Dark:400,600' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+
+    <div class='container-fluid' id='bg'>
+      <div class='container-fluid'>
+          <div class='row'>
+
+          <nav class="navbar navbar-default" id='nav'>
+            <div class='container-fluid'>
+                <button type="button" class="btn btn-default btn signUpButton" data-toggle="modal" data-target="#sign-up" role="button">Sign Up</button>
+                <button type="button" class="btn btn-default signUpButton" data-toggle="modal" data-target="#sign-in" role="button">Sign In</button>
+            </div>
+          </nav>
+
+            <div class='list well col-sm-4 float left' id='goals'>
+                <h2>Goals:</h2>
+
+                  <button type='button' class='btn btn-default btn-xs btn pull-right postButton' data-toggle='modal' data-target='#post' role='button'><a><i class='fa fa-pencil-square-o buttonText'></i><b> Make a Goal</b></a></button>
+
+                <div class='list' id ='goals-list'></div>
+            </div>
+
+
+
+            <div class='well col-sm-7 pull-right' id='action1'>
+                <h2>Workout of the day:</h2>
+
+<!--                   <form class='form-group' id='action-form1'>
+                    <div class='form-group'>
+                     <label for='text' class='col-sm-3 control-label'>Workout</label>
+                       <div class='col-sm-7'>
+                        <input type='text' class='form-control' id='workout-title' placeholder='workout'>
+                       </div>
+                    </div>
+
+                    <div class='form-group'>
+                      <div class='col-sm-1'>
+                        <button type='submit' id='actionButton1'><a class='first'>Post</a> <a class='second'>Let's do it!</a>/button>
+                      </div>
+                    </div>
+                </form> -->
+                <iframe width="500" height="315" src="https://www.youtube.com/embed/ZJ8Zdj0OPMI" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div class='well col-sm-7 pull-right' id='action2'>
+                <h2>Healthy Recipe:</h2>
+                  <h3>Spicy Citrus Shrimp with Quinoa</h3>
+                  <h4>
+                    Makes 2 servings<br><br>
+
+                    Ingredients:<br>
+                    1 cup quinoa, cooked<br>
+                    ½ tbsp extra-light olive oil<br>
+                    1 tsp garlic, minced<br>
+                    ½ tsp horseradish<br>
+                    ½ tbsp 100% pure honey<br>
+                    ½ tbsp fresh lemon juice<br>
+                    ½ tbsp fresh lime juice<br>
+                    ½ lb (8 oz) raw shrimp, peeled, deveined<br>
+                    ¼ tsp lime zest<br>
+                    ¼ tsp lemon zest<br>
+                    ½ tbsp fresh parsley, chopped<br>
+                    Crushed red chilis, to taste<br>
+                    Freshly ground pepper, to taste<br><br>
+
+                    Directions<br><br>
+                    Cook quinoa. In a medium-size frying pan, sauté olive oil, garlic, horseradish, honey, and lemon and lime juices for 2 minutes, stirring constantly. Add shrimp; cook 3–4 minutes. Turn shrimp, top with lime and lemon zest, parsley, and chilis. Cook 2–3 minutes; don’t stir. Toss, then place shrimp on quinoa. Serve.</h4>
+            </div>
+
+            <div class='well col-sm-7 pull-right' id='action3'>
+                <h2>Healthy tip of the day!</h2>
+            </div>
+         </div> <!--row div -->     
+    </div> <!--container div for page-->
+  </div><!--background-->
+
+    <!--//post goal modal-->
+      <div class='modal fade bs-example-modal-lg' id='post' tabindex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
+             <div class='modal-dialog modal-lg'>
+               <div class='modal-content'>
+
+                 <div class = 'container'> <!--//container for modal-->
+
+                   <form class='form-horizontal' id='goals-form'> <!--//modal form name-->
+                    <div class='form-group text-center'>
+                       <h2> Set your goal for today! </h2> <!--//header for post form-->
+                       </div>
+                             <div class='modal-body'>
+                               <div class='bold col-sm-4'>
+                               Goal
+                               </div>
+
+                               <div class='margin-top-20'>
+                                 <input id='goal' type='text' class='form-control' />
+                               </div>
+                               <div class='bold margin-top-20'>
+                               Description
+                               </div>
+                               <div class='margin-top-20'>
+                                <textarea class='form-control' rows='5' input id='description' type='text' class='form-control'placeholder='How to reach goal'/></textarea>
+                               </div>
+                             </div>
+                     <button id='post-goal' type='button' class='btn btn-default pull-left'><a><i class='fa fa-check'></i><b>Set my goal!</b></a></button>
+                   </div>
+                 </form>  
+                 </div><!--// container for post modal-->
+               </div>
+             </div>
+           </div><!--//end of post modal-->
+
+           <!--//edit goal modal-->
+             <div class='modal fade bs-example-modal-lg' id='edit' tabindex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
+                    <div class='modal-dialog modal-lg'>
+                      <div class='modal-content'>
+
+                        <div class = 'container'> <!--//container for modal-->
+
+                          <form class='form-horizontal' id='modalForm'> <!--//modal form name-->
+                           <div class='form-group text-center'>
+                              <h2> Make your changes... </h2> <!--//header for edit form-->
+                              </div>
+                                    <div class='modal-body'>
+                                      <div class='bold col-sm-4'>
+                                      Goal
+                                      </div>
+
+                                      <div class='margin-top-20'>
+                                        <input id='editGoal' type='text' class='form-control' />
+                                      </div>
+                                      <div class='bold margin-top-20'>
+                                      Post
+                                      </div>
+                                      <div class='margin-top-20'>
+                                       <textarea class='form-control' rows='5' input id='editDescription' type='text' class='form-control'/></textarea>
+                                      </div>
+                                    </div>
+
+                          <div class='modal-footer'>
+                            <button id='closeModal' type='button' class='btn btn-default pull-left' data-dismiss='modal'><a><i class='fa fa-times'></i><b>Close</b></a></button>
+                            <button id='submitEdit' type='button' class='btn btn-default pull-left'><a><i class='fa fa-check'></i><b>Save Edits</b></a></button>
+                            <button id='deleteGoal' type='button' class='btn btn-default pull-left'><a><i class='fa fa-trash-o'></i><b>Delete Goal</b></a></button>
+                          </div>
+                        </form>  
+                        </div><!--// container for modal-->
+                      </div>
+                    </div>
+                  </div><!--end of edit post modal-->
+
+
+                  <div class="modal fade bs-example-modal-lg" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                         <div class="modal-dialog modal-lg">
+                           <div class="modal-content">
+
+                             <div class = "container"> <!--//container for modal-->
+
+                               <form class="form-horizontal" id="sign-up-form" method="post" action="/users"> <!--//modal form name-->
+                                <div class="form-group text-center">
+                                   <h2> Sign up today!</h2> <!--//header for sign up form-->
+                                   </div>
+                                         <div class="modal-body">
+                                           <div class="bold col-sm-4">
+                                           Email
+                                           </div>
+
+                                           <div class="margin-top-20">
+                                             <input type="text" name='user[email]' class="form-control" placeholder="Email" autofocus>
+                                           </div>
+
+                                           <div class="bold margin-top-20">
+                                           Password
+                                           </div>
+                                           <div class="margin-top-20">
+                                             <input type="password" name='user[password]' class="form-control" placeholder="Password">
+                                           </div>
+                                         </div>
+
+                                       <div class="form-group">
+                                         <input type="submit" value="Sign Up" class="btn btn-primary">
+                                       </div>
+                             </form>  
+                             </div><!--// container for modal-->
+                           </div>
+                         </div>
+                       </div><!--end of sign up modal-->
+
+                        <div class="modal fade bs-example-modal-lg" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                               <div class="modal-dialog modal-lg">
+                                 <div class="modal-content">
+
+                                   <div class = "container"> <!--//container for modal-->
+
+                                     <form class="form-horizontal" id="sign-up-form" method="post" action="/login"> <!--//modal form name-->
+                                      <div class="form-group text-center">
+                                         <h2> Sign in</h2> <!--//header for sign up form-->
+                                         </div>
+                                               <div class="modal-body">
+                                                 <div class="bold col-sm-4">
+                                                 Email
+                                                 </div>
+
+                                                 <div class="margin-top-20">
+                                                   <input type="text" name='user[email]' class="form-control" placeholder="Email" autofocus>
+                                                 </div>
+
+                                                 <div class="bold margin-top-20">
+                                                 Password
+                                                 </div>
+                                                 <div class="margin-top-20">
+                                                   <input type="password" name='user[password]' class="form-control" placeholder="Password">
+                                                 </div>
+                                               </div>
+
+                                              <div class="form-group">
+                                                <input type="submit" value="Log In" class="btn btn-primary">
+                                              </div>
+                                   </form>  
+                                   </div><!--// container for modal-->
+                                 </div>
+                               </div>
+                             </div><!--end of sign in modal-->
+
+
+
+            <script type='text/template' id='goalTemplate'>
+              <div class='list' id='goals-list-<%=_id%>' data-id='<%= _id%>'>
+                  <dt><%= goal %></dt>
+                  <dd><%= description %></dd>
+                  <button type='button' class='btn btn-default btn-xs btn pull-right editButton' data-toggle='modal' data-target='#edit' role='button'><a><i class='fa fa-pencil-square-o buttonText'></i><b> Edit Goal</b></a>
+                  </button>
+               </div>
+            </script>
+
+
+  <!--  // bootstrap jquery -->   
+ <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+
+ <!--  //bootstrap javascript -->
+ <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script> 
+
+<!-- //underscore template library -->
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script> 
+
+ <!-- //my script -->
+ <script type='text/javascript' src='scripts/script.js'></script>
+
+  </body>
+</html>
