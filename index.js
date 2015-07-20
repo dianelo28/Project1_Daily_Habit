@@ -45,28 +45,28 @@ app.use(session({
 
 //middleware to manage sessions
 
-app.use('/', function(req,res, next){
-	//saves userId in session for logged in user
-	req.login = function (user){
-		req.session.userId = user.id;
-	};
+// app.use('/', function(req,res, next){
+// 	//saves userId in session for logged in user
+// 	req.login = function (user){
+// 		req.session.userId = user.id;
+// 	};
 
-	//finds user currently logged in based on 'session.userId'
-	req.currentUser = function (callback) {
-		User.findOne({_id: req.session.userId}, function(err,user){
-			req.user = user;
-			callback(null, user);
-		});
-	};
+// 	//finds user currently logged in based on 'session.userId'
+// 	req.currentUser = function (callback) {
+// 		User.findOne({_id: req.session.userId}, function(err,user){
+// 			req.user = user;
+// 			callback(null, user);
+// 		});
+// 	};
 
-	//destroy 'session.userId' to log out user
-	req.logout = function(){
-		req.session.userId = null;
-		req.user = null;
-	};
+// 	//destroy 'session.userId' to log out user
+// 	req.logout = function(){
+// 		req.session.userId = null;
+// 		req.user = null;
+// 	};
 
-	next();
-})
+// 	next();
+// })
 
 //info
 
@@ -96,9 +96,10 @@ app.post('/users', function (req,res){
 	// res.json(newUser);
 
 	User.createSecure(newUser, function (err,user){
-	// 	//log in user immediately when created
-		req.login(user);
-		res.redirect('/main');
+	 	//log in user immediately when created
+		req.session.userId = user.id
+
+		res.redirect('/');
 	});
 });
 
@@ -110,11 +111,11 @@ app.post('/login', function(req,res){
 	//call authenticate to check if pw is correct
 	User.authenticate(userData.email, userData.password, function(err,user){
 	
-		//saves user id to session
-		req.login(user);
+		//session for user
+		req.session.userId = user.id
 
 		//redirect to page
-		res.redirect('/main');
+		res.redirect('/');
 	});
 });
 
@@ -130,7 +131,8 @@ app.get('/logout', function (req,res){
 //show current user
 
 app.get('/api/users/current', function (req, res){
-	req.currentUser(function (err, user){
+	User.findOne({_id: req.session.userId}, function(err,user){
+		req.user = user;
 		res.json(user);
 	});
 });
