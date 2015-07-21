@@ -29,13 +29,14 @@ $('#post-goal').on('click', function(event){
 		description: $('#description').val()
 	}
 
+	console.log(newGoal);
+
 	$.ajax({
 		url:'/api/goals',
 		type: 'POST',
 		data: newGoal,
 		success: function(data){
-			var $newGoal = $(goalTemplate(data));
-			$list.append(newGoal);
+			$list.append($(goalTemplate(data)));
 		}
 	});
 
@@ -75,6 +76,46 @@ $('#submitEdit').on('click', function(event){
 	$('#edit').modal('hide');
 });
 
+//get currently logged in user
+
+$.ajax({
+	url:'/api/users/current',
+	type:'GET',
+	success: function(user){
+		console.log (user)
+
+		//iterate through each of their goals and render to template
+		_.each(user.goals, function (goal) {
+			console.log(goal)
+			$list.append($(goalTemplate(goal)))
+		});
+
+		//add a new goal for current user
+
+		$('#post-goal').on('click', function(event){
+			var newGoal = {
+				goal: $('#goal').val(),
+				description: $('#description').val()
+			}
+
+			console.log(newGoal);
+
+			$.ajax({
+				url:'/api/users/current/goals',
+				type: 'POST',
+				data: newGoal,
+				success: function(data){
+					console.log(newGoal);
+					$list.append($(goalTemplate(data)));
+				}
+			});
+
+			$('#post').modal('hide');
+		});
+	}
+});
+
+
 //delete a goal
 
 $('#deleteGoal').on('click', function(event){
@@ -90,5 +131,4 @@ $('#deleteGoal').on('click', function(event){
 
 	$('#edit').modal('hide');
 });
-
 });

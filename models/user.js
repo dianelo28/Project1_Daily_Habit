@@ -10,8 +10,8 @@ var UserSchema = new Schema({
 	firstName: String,
 	lastName: String,
 	email: String,
-	passwordDigest: String,
-	goal: {type: Schema.Types.ObjectId, ref:'Goal'}
+	passwordDigest: {type: String, minlength: 6},
+	goals: [Goal.schema],
 });
 
 //create a new user with secure hashed password

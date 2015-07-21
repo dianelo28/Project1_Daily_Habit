@@ -71,17 +71,25 @@ app.use(session({
 //info
 
 app.get('/', function (req, res) {
-	console.log(req.session.userId);
 	res.sendFile(__dirname + '/public/views/index.html');
+});
+
+//signup
+
+app.get('/signup', function (req, res) {
+	res.sendFile(__dirname + '/public/views/signup.html');
 });
 
 //user profile page
 
 app.get('/profile', function (req,res) {
 	//finds user currently logged in
-	req.currentUser(function (err,user) {
+	User.findOne({_id: req.session.userId}, function(err,user){
+		// console.log(user)
+		req.user = user;
+		//if user exists, send to their profile
 		if (user) {
-			res.sendFile(__dirname + '/public/views/index.html');
+			res.sendFile(__dirname + '/public/views/profile.html');
 		} else {
 			res.redirect('/');
 		}
@@ -115,12 +123,12 @@ app.post('/login', function(req,res){
 		req.session.userId = user.id
 
 		//redirect to page
-		res.redirect('/');
+		res.redirect('/profile');
 	});
 });
 
 app.get('/logout', function (req,res){
-	req.logout();
+	req.session.userId = null;
 	res.redirect('/');
 })
 
@@ -132,6 +140,7 @@ app.get('/logout', function (req,res){
 
 app.get('/api/users/current', function (req, res){
 	User.findOne({_id: req.session.userId}, function(err,user){
+		console.log(user)
 		req.user = user;
 		res.json(user);
 	});
@@ -155,7 +164,7 @@ app.get('/api/goals/:id', function (req,res){
 
 //create new goal for current user
 
-app.post('/api/goals/current/goals', function (req,res){
+app.post('/api/users/current/goals', function (req,res){
 	//creating a new goal with input from site
 	var newGoal = new Goal ({
 		goal: req.body.goal,
@@ -163,10 +172,11 @@ app.post('/api/goals/current/goals', function (req,res){
 	});
 
 	//save the new goal
+	console.log(newGoal);
 	newGoal.save();
 
 	//find current user
-	req.currentUser(function(err,user){
+		User.findOne({_id: req.session.userId}, function (err, user) {
 		//embed new goal into user
 		user.goals.push(newGoal);
 		//save user (and new log)
@@ -196,6 +206,10 @@ app.post('/api/goals', function(req,res){
 		goal: req.body.goal,
 		description: req.body.description
 	});
+
+	newGoal.save();
+
+	console.log(newGoal);
 });
 
 //update or edit a goal
