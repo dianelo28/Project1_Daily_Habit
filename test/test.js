@@ -32,9 +32,19 @@ describe ('localhost:3000/api/goals', function() {
   })
 });
 
-describe ('localhost:3000/api/goals', function() {
+describe ('localhost:3000/api/goals/:id', function() {
   it('/profile should return 200 status code', function(done) {
     request.put('http://localhost:3000/api/goals/55ae71793aeb9013434cb932', function(err, res, body) {
+      expect(res.statusCode).to.equal(200)
+      // expect(res.statusCode).to.equal(300)
+      done();
+    })
+  })
+});
+
+describe ('localhost:3000//api/users/current/goals', function() {
+  it('/profile should return 200 status code', function(done) {
+    request.put('http://localhost:3000//api/users/current/goals', function(err, res, body) {
       expect(res.statusCode).to.equal(200)
       // expect(res.statusCode).to.equal(300)
       done();

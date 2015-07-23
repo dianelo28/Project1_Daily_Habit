@@ -9,22 +9,21 @@
 }
 
 #nav{
-	top: 0;
 	background-color: #194719;
 	color: white;
 	padding-top: 10px;
 	padding-bottom: 10px;
-}
-
-h1{
-	text-align: right
+	width: 100vw;
+	margin-left: -15px;
 }
 
 .background{
-	background: url('https://feedbacksolutions.files.wordpress.com/2011/03/week5wordcloud.jpg');	background-repeat: no-repeat;
+	background: url('http://previews.123rf.com/images/dutourdumonde/dutourdumonde1405/dutourdumonde140500029/28649722-White-brick-wall-texture-or-background-Stock-Photo-wall.jpg');	
+	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment:fixed;
 	overflow: hidden;
+	background-size: 100%;
 }
 
 #goals{
@@ -45,7 +44,7 @@ h1{
 	text-align: left;
 	background-color: #FFCC66;
 	border-radius: 50%;
-	text-align: center
+	text-align: center;
 }
 
 #action3{
@@ -190,10 +189,15 @@ dd{
     font-weight: bold;
 }
 
+#action2 .smart{
+	max-width: 400px;
+	margin-left: 120px;
+}
+
 .editButton{
 	background-color: #FFFFB5;
 	color:black;
-	margin-top:5px;
+	margin-top:-60px;
 	font-size:8px;
 	text-align: right;
 	border-radius: 50px;
@@ -224,8 +228,8 @@ dd{
 }
 
 #closeModal{
-	background-color: #29A6A6;
-	color:black;
+	background-color: #730000;
+	color:white;
 	margin-top:5px;
 	font-size:8px;
 	text-align: right;
@@ -235,13 +239,13 @@ dd{
 
 #closeModal a {
 	font-family: FontAwesome;
-	color: black;
+	color: white;
 	display:block;
 	text-decoration: none;
 }
 
 #closeModal i{
-	color:black;
+	color:white;
 }
 
 #closeModal b{
@@ -257,8 +261,8 @@ dd{
 }
 
 #submitEdit{
-	background-color: #29A6A6;
-	color:black;
+	background-color: #730000;
+	color:white;
 	margin-top:5px;
 	font-size:8px;
 	text-align: right;
@@ -269,13 +273,13 @@ dd{
 
 #submitEdit a {
 	font-family: FontAwesome;
-	color: black;
+	color: white;
 	display:block;
 	text-decoration: none;
 }
 
 #submitEdit i{
-	color:black;
+	color:white;
 }
 
 #submitEdit b{
@@ -291,8 +295,8 @@ dd{
 }
 
 #deleteGoal{
-	background-color: #29A6A6;
-	color:black;
+	background-color: #730000;
+	color:white;
 	margin-top:5px;
 	font-size:8px;
 	text-align: right;
@@ -303,13 +307,13 @@ dd{
 
 #deleteGoal a {
 	font-family: FontAwesome;
-	color: black;
+	color: white;
 	display:block;
 	text-decoration: none;
 }
 
 #deleteGoal i{
-	color:black;
+	color:white;
 }
 
 #deleteGoal b{
@@ -325,8 +329,8 @@ dd{
 }
 
 #closeCommentModal{
-	background-color: #29A6A6;
-	color:black;
+	background-color: #730000;
+	color:white;
 	margin-top:5px;
 	font-size:8px;
 	text-align: right;
@@ -337,13 +341,13 @@ dd{
 
 #closeCommentModal a {
 	font-family: FontAwesome;
-	color: black;
+	color: white;
 	display:block;
 	text-decoration: none;
 }
 
 #closeCommentModal i{
-	color:black;
+	color:white;
 }
 
 #closeCommentModal b{
@@ -359,8 +363,8 @@ dd{
 }
 
 #submitComment{
-	background-color: #29A6A6;
-	color:black;
+	background-color: #730000;
+	color:white;
 	margin-top:5px;
 	font-size:8px;
 	text-align: right;
@@ -371,13 +375,13 @@ dd{
 
 #submitComment a {
 	font-family: FontAwesome;
-	color: black;
+	color: white;
 	display:block;
 	text-decoration: none;
 }
 
 #submitComment i{
-	color:black;
+	color:white;
 }
 
 #submitComment b{
@@ -393,8 +397,8 @@ dd{
 }
 
 #deleteComment{
-	background-color: #29A6A6;
-	color:black;
+	background-color: #730000;
+	color:white;
 	margin-top:5px;
 	font-size:8px;
 	text-align: right;
@@ -405,13 +409,13 @@ dd{
 
 #deleteComment a {
 	font-family: FontAwesome;
-	color: black;
+	color: white;
 	display:block;
 	text-decoration: none;
 }
 
 #deleteComment i{
-	color:black;
+	color:white;
 }
 
 #deleteComment b{
@@ -465,7 +469,7 @@ dd{
   font: normal normal 700 1em/4em Arial,sans-serif;
   overflow: hidden;
   width: 160px;
-  background-color: #29A6A6;
+  background-color: #730000;
 }
 
 #postButton:hover{
@@ -474,7 +478,7 @@ dd{
 
 #postButton a:hover{
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 #postButton:hover .first{

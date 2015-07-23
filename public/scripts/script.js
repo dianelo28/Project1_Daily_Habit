@@ -128,19 +128,24 @@ $('#sign-up-form').on('submit', function(e){
 	$('#sign-up').modal('hide');
 });
 
-// $.ajax({
-// 	url: 'https://community-food2fork.p.mashape.com/get?key=7265727d95515b59e5a8f7e7ec0f3d9f&rId=37859',
-// 	type:'GET',
-// 	data:{ recipes },
-// 	datatype: 'json',
-// 	success: function(data) {
-// 		var searchResult = data.recipe;
-// 			console.log(searchResult)
-// 		},
-// 	error: function(err) { alert(err) },
-// 	beforeSend: function(xhr){
-// 		xhr.setRequestHeader ("X-Mashape-Key", "eqGe7SasOCmshHHd4jnPnA5MeUlzp1eY22Vjsn7GvsKlYaYo5i");
-// 	}
+// selections with drop down
 
-// 	});
+$('select')
+	.change(function(){
+		var str = "";
+		$( "select option:selected" ).each(function() {
+			str += $(this).text() + " ";
+		});
+
+		console.log(str);
+		var goal = {
+			goal: str,
+			description: 'Start moving more each day and keep a food journal'
+		}
+
+		console.log(goal);
+		$list.append($(goalTemplate(goal)));
+
+	})
+	.change();
 });

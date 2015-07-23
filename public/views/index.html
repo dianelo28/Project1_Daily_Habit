@@ -18,23 +18,39 @@
 <div class="jumbotron">
 </div>
 <div class='background'>
-    <div class='container'>
-      <div class='row'>  
 
-        <nav class="navbar navbar-default" id='nav'>
           <div class='container-fluid'>
+            <nav class="navbar navbar-default" id='nav'>
               <button type="button" class="btn btn-default btn signUpButton" data-toggle="modal" data-target="#sign-up" role="button">Sign Up</button>
               <button type="button" class="btn btn-default signInButton" data-toggle="modal" data-target="#sign-in" role="button">Sign In</button>
+            </nav>
           </div>
-        </nav>
+
 <!--       <input type='checkbox' id='nav-trigger' class='nav-trigger' />
 <label for='nav-trigger'></label>
 -->
 <!--       <div class='site-wrap'> -->
+<div class='container'>
+  <div class='row'>  
 
 <div class='list well col-sm-4 float left' id='goals'>
   <h2>Goals:</h2>
-
+    <form name="myform" action="/api/goals" method="POST">
+        <select name='goalsSelect'>
+          <option value='goal'>What's your goal?</option>
+            <option value='lose'>Lose some weight</option>
+            <option value='tone'>Tone it up!</option>
+            <option value='eat'>Eat Healthier</option>
+            <option value='5k'>Train for a 5k</option>
+            <option value='10k'>Train for a 10k</option>
+            <option value='13.1'>Train for a Half Marathon</option>
+            <option value='26.2'>Train for a Full Marathon</option>
+            <option value='tri'>Train for a Triathalon</option>
+        </select>
+<!--       <button id='choose' type='submit' class='btn btn-default pull-right'>Let's go!</button> -->
+    </form>
+    <br>
+    <br>
   <button type='button' class='btn btn-default btn-xs btn pull-right postButton' data-toggle='modal' data-target='#post' role='button'><a><i class='fa fa-pencil-square-o buttonText'></i><b> Make a Goal</b></a></button>
   <br>
   <br>
@@ -69,7 +85,7 @@
 
           // 4. The API will call this function when the video player is ready.
           function onPlayerReady(event) {
-            player.loadPlaylist({'listType': 'playlist', 'list': 'PL1c41tQdiDhMuHGJwlxVh2I4mZpdOM2_B','startSeconds': '0','suggestedQuality': 'hd720'});
+            player.cuePlaylist({'listType': 'playlist', 'list': 'PL1c41tQdiDhMuHGJwlxVh2I4mZpdOM2_B', 'startSeconds': '0','suggestedQuality': 'hd720'});
             setShuffle(true);
 
           }
@@ -92,6 +108,7 @@
 
 <div class='well col-sm-7 pull-right' id='action2'>
 <!--   <form class='form-horizontal' id='recipeSearch'> -->
+  <div class='smart'>
     <h2>How to set SMART goals:</h2>
       <dl>
         <dt>Specific</dt>
@@ -105,7 +122,7 @@
         <dt>Timely</dt>
          <dd>How much time do you have to complete the task?  Decide exactly when you'll start and finish your goal.</dd>
       </dl>
-
+  </div>
 <!--       <div class='margin-top-20'>
         <textarea class='form-control' input id='recipe' type='text' class='form-control'placeholder='What would you like to eat today?'></textarea>
       </div>
@@ -115,12 +132,13 @@
 </div>
 
   <div class='well col-sm-7 pull-right' id='action3'>
-    <h2>Healthy tip of the day!</h2>
-  </div>
+    <h2>Healthy Reads</h2>
+   <!-- start feedwind code --><script type="text/javascript">document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');</script><script type="text/javascript">(function() {var params = {rssmikle_url: "http://www.health.com/health/food-recipes/feed|http://www.health.com/health/diet-fitness/feed",rssmikle_frame_width: "400",rssmikle_frame_height: "400",frame_height_by_article: "0",rssmikle_target: "_blank",rssmikle_font: "Arial, Helvetica, sans-serif",rssmikle_font_size: "12",rssmikle_border: "off",responsive: "off",rssmikle_css_url: "",text_align: "left",text_align2: "left",corner: "off",scrollbar: "on",autoscroll: "off",scrolldirection: "up",scrollstep: "3",mcspeed: "20",sort: "Off",rssmikle_title: "off",rssmikle_title_sentence: "",rssmikle_title_link: "",rssmikle_title_bgcolor: "#0066FF",rssmikle_title_color: "#FFFFFF",rssmikle_title_bgimage: "",rssmikle_item_bgcolor: "#FFFFFF",rssmikle_item_bgimage: "",rssmikle_item_title_length: "55",rssmikle_item_title_color: "#A12D40",rssmikle_item_border_bottom: "on",rssmikle_item_description: "on",item_link: "off",rssmikle_item_description_length: "150",rssmikle_item_description_color: "#666666",rssmikle_item_date: "gl1",rssmikle_timezone: "Etc/GMT",datetime_format: "%b %e, %Y %l:%M:%S %p",item_description_style: "text+tn",item_thumbnail: "full",item_thumbnail_selection: "auto",article_num: "15",rssmikle_item_podcast: "off",keyword_inc: "",keyword_exc: ""};feedwind_show_widget_iframe(params);})();</script><div style="font-size:10px; text-align:center; width:400px;"><a href="http://feed.mikle.com/" target="_blank" style="color:#CCCCCC;">RSS Feed Widget</a><!--Please display the above link in your web page according to Terms of Service.-->
+ </div> <!-- end feedwind code -->
 
+</div>
 </div> <!--row div -->   
 </div> <!--container for page-->       
-</div><!--container for nav-->
 </div><!--container for body-->
 
 
@@ -270,10 +288,16 @@
 
 <script type='text/template' id='goalTemplate'>
 <div class='list' id='goals-list-<%=_id%>' data-id='<%= _id%>'>
-<dt><%= goal %></dt>
-<dd><%= description %></dd>
-<button type='button' class='btn btn-default btn-xs btn pull-right editButton' data-toggle='modal' data-target='#edit' role='button'><a><i class='fa fa-pencil-square-o buttonText'></i><b> Edit Goal</b></a>
-</button>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <input id="Option" type="checkbox">
+            <label class="checkbox" for="Option"></label>
+        <dt><%= goal %></dt>
+        <dd><%= description %></dd>
+        <button type='button' class='btn btn-default btn-xs btn pull-right editButton' data-toggle='modal' data-target='#edit' role='button'><a><i class='fa fa-pencil-square-o buttonText'></i><b> Edit Goal</b></a>
+        </button>
+    </div>
+  </div>
 </div>
 </script>
 
