@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+	$(document).ready(function() {
+	        $("body").css("display", "none");
+	        $("body").fadeIn(2000);
+	});
+
+
 var $list = $('#goals-list')
 
 var goalTemplate = _.template($('#goalTemplate').html());
@@ -22,7 +28,7 @@ $.ajax({
 		//add header to welcome
 		
 		var welcome = document.querySelector('h1');
-		welcome.innerHTML = 'Welcome ' + user.firstName ;
+		welcome.innerHTML = 'Hi ' + user.firstName + "! Here's what you need to do today!" ;
 
 		//add a new goal for current user
 
@@ -47,6 +53,41 @@ $.ajax({
 			$('#post').modal('hide');
 		});
 	}
+});
+
+$('.logOutButton').on('click', function(){
+
+	$.ajax({
+		url:'/logout',
+		type: 'GET',
+		sucess: function(){
+			window.reload(true);
+		}
+	});
+});
+
+$('.nav-tabs > li > a').click(function(event){
+
+	//get displaying tab content jQuery selector
+	var active_tab_selector = $('.nav-tabs > li.active > a').attr('href');
+	 
+	//hide displaying tab content
+	$(active_tab_selector).fadeOut(1000);
+	$(active_tab_selector).removeClass('active');
+	$(active_tab_selector).addClass('hide');
+
+
+	//find actived navigation and remove 'active' css
+	var actived_nav = $('.nav-tabs > li.active');
+	actived_nav.removeClass('active');
+
+	//add 'active' css into clicked navigation
+	$(this).parents('li').addClass('active');
+
+	var target_tab_selector = $(this).attr('href');
+	$(target_tab_selector).fadeIn(1000);
+	$(target_tab_selector).removeClass('hide');
+	$(target_tab_selector).addClass('active');
 });
 });
 	
