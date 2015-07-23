@@ -137,6 +137,10 @@
   width: 70%;
 }
 
+h1{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 25px;
+}
 
 h2{
 	text-align: center;
@@ -146,10 +150,14 @@ h2{
 
 dt{
 	margin-bottom: 10px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 20px;
 }
 
 dd{
 	margin-bottom: 30px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 15px;
 }
 
 #action2 dt::first-letter { 
