@@ -268,5 +268,6 @@ app.delete('/api/goals/:id', function(req,res){
 // });
 
 // listen on port 3000
-app.listen(process.env.PORT || require ('./config').PORT);
+app.listen(process.env.PORT || require ('./config').PORT, function(){
   console.log('server started on localhost:3000');
+});
