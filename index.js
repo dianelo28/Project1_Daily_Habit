@@ -23,7 +23,7 @@ app.use(express.static(__dirname + '/public'));
 var mongoose = require('mongoose');
 var Goal = require ('./models/goal');
 var User = require('./models/user');
-var config = require('./config')
+// var config = require('./config')
 
 mongoose.connect(
   process.env.MONGOLAB_URI ||
@@ -40,7 +40,7 @@ app.set('view engine', 'ejs');
 app.use(session({
 	saveUninitialized: true,
 	resave: true,
-	secret: config.SESSION_SECRET,
+	secret: require('./config').SESSION_SECRET,
 	cookie: { maxAge: 60000 }
 }));
 
@@ -268,5 +268,5 @@ app.delete('/api/goals/:id', function(req,res){
 // });
 
 // listen on port 3000
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || require ('./config').PORT);
   console.log('server started on localhost:3000');

@@ -6,3 +6,11 @@ Technology used:
 - Mongo/Mongoose
 - jQuery/AJAX
 
+Steps to run locally:
+
+Clone Repo
+NPM install
+Secret Keys
+Start Server
+
+Link to Heroku
