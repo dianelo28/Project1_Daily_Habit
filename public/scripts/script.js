@@ -130,31 +130,31 @@ $('#sign-up-form').on('submit', function(e){
 
 // selections with drop down
 
-// $('select')
-// 	.change(function(){
-// 		var str = "";
-// 		$( "select option:selected" ).each(function() {
-// 			str += $(this).text() + " ";
-// 		});
+$('select')
+	.change(function(){
+		var str = "";
+		$( "select option:selected" ).each(function() {
+			str += $(this).text() + " ";
+		});
 
-// 		console.log(str);
+		console.log(str);
 
-// 		// var goal = {
-// 		// 	goal: str,
-// 		// 	description: 'Start moving more each day and keep a food journal'
-// 		// }
+		// var goal = {
+		// 	goal: str,
+		// 	description: 'Start moving more each day and keep a food journal'
+		// }
 
-// 		// console.log(goal);
+		// console.log(goal);
 
-// 		$.ajax({
-// 			url:'/api/dropdown',
-// 			type:'GET',
-// 			data: str,
-// 			success: function(data){
-// 			$list.append($(goalTemplate(str)));
-// 			}
-// 		});
-// 	});
+		$.ajax({
+			url:'/api/dropdown',
+			type:'GET',
+			data: str,
+			success: function(data){
+			$list.append($(goalTemplate(str)));
+			}
+		});
+	});
 
 	// .change();
 

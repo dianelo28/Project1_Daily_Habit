@@ -9,6 +9,7 @@ var express = require('express'),
     bcrypt = require('bcrypt'),
     salt = bcrypt.genSaltSync(10),
     unirest = require('unirest'),
+    dotenv = require('dotenv'),
     session = require('express-session');
 
 // tell app to use bodyParser middleware
@@ -18,12 +19,16 @@ app.use(bodyParser.json());
 // serve js and css files from public folder
 app.use(express.static(__dirname + '/public'));
 
+//dot env
+dotenv.load();
+
 //mongoose/models
 
 var mongoose = require('mongoose');
 var Goal = require ('./models/goal');
 var User = require('./models/user');
 var Train = require('./models/train');
+var env = process.env;
 // var config = require('./config')
 
 mongoose.connect(
@@ -41,7 +46,7 @@ app.set('view engine', 'ejs');
 app.use(session({
 	saveUninitialized: true,
 	resave: true,
-	secret: require('./config').SESSION_SECRET,
+	secret: env.SESSION_SECRET,
 	cookie: { maxAge: 60000 }
 }));
 
@@ -288,6 +293,4 @@ app.get('/api/dropdown', function(req,res){
 // });
 
 // listen on port 3000
-app.listen(process.env.PORT || require ('./config').PORT, function(){
-  console.log('server started on localhost:3000');
-});
+app.listen(process.env.PORT || 3000)
