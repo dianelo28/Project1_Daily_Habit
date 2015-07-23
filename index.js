@@ -194,7 +194,7 @@ app.post('/api/users/current/goals', function (req,res){
 	});
 
 	//save the new goal
-	console.log(newGoal);
+	// console.log(newGoal);
 	newGoal.save();
 
 	//find current user
@@ -231,7 +231,7 @@ app.post('/api/goals', function(req,res){
 
 	newGoal.save();
 
-	console.log(newGoal);
+	// console.log(newGoal);
 });
 
 //update or edit a goal
@@ -272,7 +272,7 @@ app.delete('/api/goals/:id', function(req,res){
 
 app.get('/api/dropdown', function(req,res){
 	var targetId = (Train.find({goal: req.body.goalsSelect}))._id;
-	console.log(targetId);
+	// console.log(targetId);
 	// Train.find({goal: goal}, function(err, train){
 		if (err){
 			console.log('nope!', err);

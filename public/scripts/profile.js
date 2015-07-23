@@ -28,7 +28,7 @@ $.ajax({
 		//add header to welcome
 		
 		var welcome = document.querySelector('h1');
-		welcome.innerHTML = 'Hi ' + user.firstName + "! Here's what you need to do today!" ;
+		welcome.innerHTML = 'Hi ' + user.firstName + "! Here's what you need to do!" ;
 
 		//add a new goal for current user
 
