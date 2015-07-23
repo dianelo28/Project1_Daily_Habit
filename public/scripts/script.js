@@ -14,7 +14,7 @@ $.ajax({
 		console.log(data);
 
 		_.each(goals, function(goal){
-			console.log(goal)
+			// console.log(goal)
 			var newGoal = $(goalTemplate(goal));
 			$list.append(newGoal)
 		});
@@ -29,7 +29,7 @@ $('#post-goal').on('click', function(event){
 		description: $('#description').val()
 	}
 
-	console.log(newGoal);
+	// console.log(newGoal);
 
 	$.ajax({
 		url:'/api/goals',
@@ -76,46 +76,6 @@ $('#submitEdit').on('click', function(event){
 	$('#edit').modal('hide');
 });
 
-//get currently logged in user
-
-$.ajax({
-	url:'/api/users/current',
-	type:'GET',
-	success: function(user){
-		console.log (user)
-
-		//iterate through each of their goals and render to template
-		_.each(user.goals, function (goal) {
-			console.log(goal)
-			$list.append($(goalTemplate(goal)))
-		});
-
-		//add a new goal for current user
-
-		$('#post-goal').on('click', function(event){
-			var newGoal = {
-				goal: $('#goal').val(),
-				description: $('#description').val()
-			}
-
-			console.log(newGoal);
-
-			$.ajax({
-				url:'/api/users/current/goals',
-				type: 'POST',
-				data: newGoal,
-				success: function(data){
-					console.log(newGoal);
-					$list.append($(goalTemplate(data)));
-				}
-			});
-
-			$('#post').modal('hide');
-		});
-	}
-});
-
-
 //delete a goal
 
 $('#deleteGoal').on('click', function(event){
@@ -131,4 +91,56 @@ $('#deleteGoal').on('click', function(event){
 
 	$('#edit').modal('hide');
 });
+
+//create a new user
+
+$('#sign-up-form').on('submit', function(e){
+	e.preventDefault();
+	// var newUser = {
+	// 	firstName: $('#firstName').val(),
+	// 	lastName: $('#lastName').val(),
+	// 	email: $('#email').val(),
+	// 	password: $('#password').val(),
+	// };
+
+	var password = $('#password').val();
+
+	if ( password.length <= 4){
+
+		alert('Password too short!');
+		return('Too short!');
+	}
+
+	$.ajax({
+		url:'/users',
+		type:'POST',
+		data: $("#sign-up-form").serialize(),
+		success: function(data){
+			// alert("SENDING")
+			console.log(data);
+		},
+		error: function(data, status, error) {
+		  alert(data.responseText);
+		}
+
+	});
+
+	$('#sign-up').modal('hide');
+});
+
+// $.ajax({
+// 	url: 'https://community-food2fork.p.mashape.com/get?key=7265727d95515b59e5a8f7e7ec0f3d9f&rId=37859',
+// 	type:'GET',
+// 	data:{ recipes },
+// 	datatype: 'json',
+// 	success: function(data) {
+// 		var searchResult = data.recipe;
+// 			console.log(searchResult)
+// 		},
+// 	error: function(err) { alert(err) },
+// 	beforeSend: function(xhr){
+// 		xhr.setRequestHeader ("X-Mashape-Key", "eqGe7SasOCmshHHd4jnPnA5MeUlzp1eY22Vjsn7GvsKlYaYo5i");
+// 	}
+
+// 	});
 });

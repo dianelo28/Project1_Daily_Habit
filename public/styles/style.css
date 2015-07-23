@@ -1,61 +1,174 @@
-#bg{
-*/	width:100%;
-	max-height: 100%;
+.jumbotron{
+	background: url('https://feedbacksolutions.files.wordpress.com/2011/03/week5wordcloud.jpg');
+	text-align: center;
 	background-repeat: no-repeat;
-	background-size: cover;
 	background-position: center;
-	background-attachment: fixed;
+	background-attachment:fixed;
 	overflow: hidden;
-	background-image: 
-    linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-      ),
-    url('https://www.colourbox.com/preview/11813242-dumbells-tape-measure-and-healthy-food-fitness-and-health.jpg');
+	height: 550px;
 }
 
 #nav{
 	top: 0;
-	background-color: black;
-	margin-top: 20px;
-	opacity: .5;
+	background-color: #194719;
 	color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+h1{
+	text-align: right
+}
+
+.background{
+	background: url('https://feedbacksolutions.files.wordpress.com/2011/03/week5wordcloud.jpg');	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment:fixed;
+	overflow: hidden;
 }
 
 #goals{
 	margin-top: 20px;
-	opacity: .7;
-}
-
-#goals:hover{
-	opacity:1;
+	background-color: #FF9933;
+	border-radius: 10%;
 }
 
 #action1{
 	margin-top: 20px;
-	opacity: .7;
-	text-align: center
-}
-
-#action1:hover{
-	opacity: 1;
+	text-align: center;
+	background-color: #FFCC66;
+	border-radius: 10%;
 }
 
 #action2{
-	opacity: .7;
-}
-
-#action2:hover{
-	opacity:1;
+	margin-top: 20px;
+	text-align: left;
+	background-color: #FFCC66;
+	border-radius: 50%;
+	text-align: center
 }
 
 #action3{
-	opacity: .7;
+	margin-top: 20px;
+	text-align: center;
+	background-color: #FFCC66;
+	border-radius: 20%;
 }
 
-#action3:hover{
-	opacity: 1;
+.signUpButton {
+    letter-spacing: 0;
+    padding: 10px;
+    margin: 10px;
 }
+
+.signUpButton:hover,
+.signUpButton:active {
+  letter-spacing: 5px;
+}
+
+.signUpButton:after,
+.signUpButton:before {
+  backface-visibility: hidden;
+  border: 1px solid rgba(#fff, 0);
+  bottom: 0px;
+  content: " ";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  transition: all 280ms ease-in-out;
+  width: 0;
+}
+
+.signUpButton:hover:after,
+.signUpButton:hover:before {
+  backface-visibility: hidden;
+  border-color: #fff;
+  transition: width 350ms ease-in-out;
+  width: 70%;
+}
+
+.signUpButton:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 70%;
+}
+
+.signInButton {
+    letter-spacing: 0;
+    padding: 10px;
+    margin: 10px;
+}
+
+.signInButton:hover,
+.signInButton:active {
+  letter-spacing: 5px;
+}
+
+.signInButton:after,
+.signInButton:before {
+  backface-visibility: hidden;
+  border: 1px solid rgba(#fff, 0);
+  bottom: 0px;
+  content: " ";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  transition: all 280ms ease-in-out;
+  width: 0;
+}
+
+.signInButton:hover:after,
+.signInButton:hover:before {
+  backface-visibility: hidden;
+  border-color: #fff;
+  transition: width 350ms ease-in-out;
+  width: 70%;
+}
+
+.signInButton:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 70%;
+}
+
+.logOut {
+    letter-spacing: 0;
+    padding: 10px;
+    margin: 10px;
+}
+
+.logOut:hover,
+.logOut:active {
+  letter-spacing: 5px;
+}
+
+.logOut:after,
+.logOut:before {
+  backface-visibility: hidden;
+  border: 1px solid rgba(#fff, 0);
+  bottom: 0px;
+  content: " ";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  transition: all 280ms ease-in-out;
+  width: 0;
+}
+
+.logOut:hover:after,
+.logOut:hover:before {
+  backface-visibility: hidden;
+  border-color: #fff;
+  transition: width 350ms ease-in-out;
+  width: 70%;
+}
+
+.logOut:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 70%;
+}
+
 
 h2{
 	text-align: center;
@@ -69,6 +182,12 @@ dt{
 
 dd{
 	margin-bottom: 30px;
+}
+
+#action2 dt::first-letter { 
+    font-size: 200%;
+    color: #75A319;
+    font-weight: bold;
 }
 
 .editButton{
@@ -311,11 +430,11 @@ dd{
 	margin-top:20px;
 }
 
-#modalForm {
-	max-width:800px;
+.modal-body{
+	max-width: 800px;
 }
 
-.modal-body {
+#sign-up-form{
 	max-width: 800px;
 }
 
@@ -361,6 +480,4 @@ dd{
 #postButton:hover .first{
   margin-top: -4em;
 }
-
-
 

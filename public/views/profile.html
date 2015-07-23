@@ -15,6 +15,11 @@
     <link href='https://fonts.googleapis.com/css?family=Palanquin+Dark:400,600' rel='stylesheet' type='text/css'>
   </head>
   <body>
+    
+  <body>
+  <div class="jumbotron">
+  </div>
+  <div class='background'>
 
     <div class='container-fluid' id='bg'>
       <div class='container-fluid'>
@@ -23,9 +28,8 @@
           <nav class="navbar navbar-default" id='nav'>
             <div class='container-fluid'>
               <form method="get" action="/logout">
-                <button type="button" class="btn btn-default btn signUpButton" data-toggle="modal" data-target="#sign-up" role="button">Sign Up</button>
-                <button type="button" class="btn btn-default signInButton" data-toggle="modal" data-target="#sign-in" role="button">Sign In</button>
-                <input type='submit' value='Log Out' class='btn btn-primary'>
+                <input type='submit' value='Log Out' class='btn btn-default logOut'>
+                <h1></h1>
               </form>
             </div>
           </nav>
@@ -42,23 +46,51 @@
 
             <div class='well col-sm-7 pull-right' id='action1'>
                 <h2>Workout of the day:</h2>
+                <div id="player"></div>
+                <script>
+                      // 2. This code loads the IFrame Player API code asynchronously.
+                      var tag = document.createElement('script');
 
-<!--                   <form class='form-group' id='action-form1'>
-                    <div class='form-group'>
-                     <label for='text' class='col-sm-3 control-label'>Workout</label>
-                       <div class='col-sm-7'>
-                        <input type='text' class='form-control' id='workout-title' placeholder='workout'>
-                       </div>
-                    </div>
+                      tag.src = "https://www.youtube.com/iframe_api";
+                      var firstScriptTag = document.getElementsByTagName('script')[0];
+                      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-                    <div class='form-group'>
-                      <div class='col-sm-1'>
-                        <button type='submit' id='actionButton1'><a class='first'>Post</a> <a class='second'>Let's do it!</a>/button>
-                      </div>
-                    </div>
-                </form> -->
-<!--                 <iframe width="500" height="315" src="https://www.youtube.com/embed/ZJ8Zdj0OPMI" frameborder="0" allowfullscreen></iframe> -->
-            </div>
+                      // 3. This function creates an <iframe> (and YouTube player)
+                      //    after the API code downloads.
+                      var player;
+                      function onYouTubeIframeAPIReady() {
+                        player = new YT.Player('player', {
+                          height: '390',
+                          width: '640',
+                          events: {
+                            'onReady': onPlayerReady,
+                            'onStateChange': onPlayerStateChange
+                          }
+                        });
+                      }
+
+                      // 4. The API will call this function when the video player is ready.
+                      function onPlayerReady(event) {
+                        player.loadPlaylist({'listType': 'playlist', 'list': 'PL1c41tQdiDhMuHGJwlxVh2I4mZpdOM2_B','startSeconds': '0','suggestedQuality': 'hd720'});
+                        setShuffle(true);
+
+                      }
+
+                      // 5. The API calls this function when the player's state changes.
+                      //    The function indicates that when playing a video (state=1),
+                      //    the player should play for six seconds and then stop.
+                      var done = false;
+                      function onPlayerStateChange(event) {
+                        if (event.data == YT.PlayerState.PLAYING && !done) {
+                          setTimeout(stopVideo, 6000);
+                          done = true;
+                        }
+                      }
+                      function stopVideo() {
+                        player.stopVideo();
+                      }
+                    </script>
+                </div>
 
             <div class='well col-sm-7 pull-right' id='action2'>
                 <h2>Healthy Recipe:</h2>
@@ -89,8 +121,9 @@
                 <h2>Healthy tip of the day!</h2>
             </div>
          </div> <!--row div -->     
-    </div> <!--container div for page-->
-  </div><!--background-->
+      </div> <!--container div for page-->
+    </div><!--background-->
+  </div>
 
     <!--//post goal modal-->
       <div class='modal fade bs-example-modal-lg' id='post' tabindex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
@@ -259,7 +292,7 @@
  <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script> 
 
  <!-- //my script -->
-  <script type='text/javascript' src='scripts/script.js'></script>
+  <script type='text/javascript' src='scripts/profile.js'></script>
 
   </body>
 </html>

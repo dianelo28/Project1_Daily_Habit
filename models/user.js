@@ -3,14 +3,21 @@ var mongoose = require('mongoose'),
 	bcrypt = require('bcrypt'),
 	salt = bcrypt.genSaltSync(10),
 	Goal = require('./goal');
+	// uniqueValidator = require('mongoose-unique-validator');
 
 //set User Schema
 
 var UserSchema = new Schema({
 	firstName: String,
 	lastName: String,
-	email: String,
-	passwordDigest: {type: String, minlength: 6},
+	email: {
+		type: String,
+		required: true
+		// index: {
+		// 	unique: true
+		// }
+	},
+	passwordDigest: {type: String, required: true, minlength: 6},
 	goals: [Goal.schema],
 });
 
@@ -62,5 +69,14 @@ UserSchema.methods.checkPassword = function (password){
 //create User Model
 
 var User = mongoose.model('User', UserSchema);
+// UserSchema.plugin(uniqueValidator);
 
 module.exports = User;
+
+// User.schema.path('email').validate(function (value, respond) {                                                                                           
+//     User.findOne({ email: value }, function (err, user) {                                                                                                
+//         if(user) respond(false);                                                                                                                         
+//     });                                                                                                                                                  
+// }, 'This email address is already registered');
+
+

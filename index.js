@@ -8,6 +8,7 @@ var express = require('express'),
     ejs = require('ejs'),
     bcrypt = require('bcrypt'),
     salt = bcrypt.genSaltSync(10),
+    unirest = require('unirest'),
     session = require('express-session');
 
 // tell app to use bodyParser middleware
@@ -29,7 +30,6 @@ mongoose.connect(
   'mongodb://localhost/workout' // plug in the db name you've been using
 );
 // mongoose.connect('mongodb://localhost/workout');
-
 
 //set view engine for server-side templating
 app.set('view engine', 'ejs');
@@ -77,7 +77,7 @@ app.get('/', function (req, res) {
 //signup
 
 app.get('/signup', function (req, res) {
-	res.sendFile(__dirname + '/public/views/signup.html');
+	res.sendFile(__dirname + '/public/views/index.html');
 });
 
 //user profile page
@@ -100,14 +100,23 @@ app.get('/profile', function (req,res) {
 
 //create new user with secure password
 app.post('/users', function (req,res){
-	var newUser = req.body.user;
-	// res.json(newUser);
+	//get the email from form
 
-	User.createSecure(newUser, function (err,user){
-	 	//log in user immediately when created
-		req.session.userId = user.id
+	User.findOne({ 
+		email: req.body.email 
+	}, 
+	function(err,user){
+		
+		if (user) {
+			res.status(400).send ({ message:'Email already exists!'})
+		} else {
+			User.createSecure(req.body, function (err,user){
+		 		//log in user immediately when created
+				req.session.userId = user.id
+				res.status(201).send(user)
 
-		res.redirect('/');
+			})	
+		}
 	});
 });
 
@@ -120,6 +129,7 @@ app.post('/login', function(req,res){
 	User.authenticate(userData.email, userData.password, function(err,user){
 	
 		//session for user
+		console.log(req.session.userId)
 		req.session.userId = user.id
 
 		//redirect to page
@@ -140,7 +150,7 @@ app.get('/logout', function (req,res){
 
 app.get('/api/users/current', function (req, res){
 	User.findOne({_id: req.session.userId}, function(err,user){
-		console.log(user)
+		// console.log(user)
 		req.user = user;
 		res.json(user);
 	});
@@ -245,6 +255,16 @@ app.delete('/api/goals/:id', function(req,res){
 		}
 	});
 });
+
+
+//food2fork API
+
+// unirest.get("https://community-food2fork.p.mashape.com/search?key=7265727d95515b59e5a8f7e7ec0f3d9f&q=" + search + "&sort=rating")
+// .header("X-Mashape-Key", "eqGe7SasOCmshHHd4jnPnA5MeUlzp1eY22Vjsn7GvsKlYaYo5i")
+// .header("Accept", "application/json")
+// .end(function (result) {
+//   console.log(result.status, result.headers, result.body);
+// });
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000);
