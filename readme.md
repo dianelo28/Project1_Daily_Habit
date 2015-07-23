@@ -8,9 +8,10 @@ Technology used:
 
 Steps to run locally:
 
-1) Clone Repo (https://github.com/dianelo28/Project1_Daily_Habit.git)
-2) NPM install
-3) Don't forget to create a Secret Key for sessions!
-4) Start your Server
+1) Clone Repo (https://github.com/dianelo28/Project1_Daily_Habit.git) <br>
+2) NPM install <br>
+3) Don't forget to create a Secret Key for sessions!<br>
+4) Start your Server<br>
 
+<br>
 - Link to Heroku (dailyhabit.herokuapp.com)
