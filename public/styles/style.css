@@ -5,129 +5,98 @@
 	background-position: center;
 	background-attachment:fixed;
 	overflow: hidden;
-	height: 550px;
+	height: 600px;
 }
 
-#nav{
-	background-color: #194719;
-	color: white;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	width: 100vw;
-	margin-left: -15px;
+ 
+#nav { 
+	margin: 0px 0 0 150px; 
+}
+
+#nav ul { 
+	list-style:none; 
+}
+
+#nav ul li { 
+	display:inline; 
+	float:left; 
+	margin-bottom:20px; 
+}
+
+#nav ul li a { 
+	padding:20px; 
+	background: rgba(255,255,255,0.3); 
+	text-decoration: none; 
+	font: bold 14px Helvetica, Sans-Serif; 
+	letter-spacing: -1px; 
+	color: black;
+    text-shadow: #eee 0px 0px 2px; 
+}
+
+
+/* :first-child pseudo selector with rounded top left corner */
+#nav ul li:first-child a { 
+	-moz-border-radius-topleft: 12px; 
+	-webkit-border-top-left-radius:12px; 
+}
+ 
+/* :last-child pseudo selector with rounded top right corner */
+#nav ul li:last-child a { 
+	-moz-border-radius-topright: 12px; 
+	-webkit-border-top-right-radius:12px; }
+
+
+/* :first-child pseudo selector with rounded top left corner */
+#nav ul li:first-child a { 
+	-moz-border-radius-topleft: 12px; 
+	-webkit-border-top-left-radius:12px; 
+}
+	 
+/* :last-child pseudo selector with rounded top right corner */
+#nav ul li:last-child a { 
+	-moz-border-radius-topright: 12px; 
+	-webkit-border-top-right-radius:12px; 
+}
+
+.tab-content.active{
+    display: block;
+}
+
+.tab-content.hide{
+    display: none;
 }
 
 .background{
-	background: url('http://previews.123rf.com/images/dutourdumonde/dutourdumonde1405/dutourdumonde140500029/28649722-White-brick-wall-texture-or-background-Stock-Photo-wall.jpg');	
+	background: url('http://mdhomehealth.com/wp-content/uploads/2014/08/bigstock-Fresh-farmers-market-fruit-and-62069393.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment:fixed;
 	overflow: hidden;
-	background-size: 100%;
+	margin-top: -10px;
+
 }
 
 #goals{
 	margin-top: 20px;
-	background-color: #FF9933;
-	border-radius: 10%;
+	background-color: white;
 }
 
 #action1{
 	margin-top: 20px;
 	text-align: center;
-	background-color: #FFCC66;
-	border-radius: 10%;
+	background-color: white;
 }
 
 #action2{
 	margin-top: 20px;
 	text-align: left;
-	background-color: #FFCC66;
-	border-radius: 50%;
-	text-align: center;
+	background-color: white;
 }
 
 #action3{
 	margin-top: 20px;
 	text-align: center;
-	background-color: #FFCC66;
-	border-radius: 20%;
-}
-
-.signUpButton {
-    letter-spacing: 0;
-    padding: 10px;
-    margin: 10px;
-}
-
-.signUpButton:hover,
-.signUpButton:active {
-  letter-spacing: 5px;
-}
-
-.signUpButton:after,
-.signUpButton:before {
-  backface-visibility: hidden;
-  border: 1px solid rgba(#fff, 0);
-  bottom: 0px;
-  content: " ";
-  display: block;
-  margin: 0 auto;
-  position: relative;
-  transition: all 280ms ease-in-out;
-  width: 0;
-}
-
-.signUpButton:hover:after,
-.signUpButton:hover:before {
-  backface-visibility: hidden;
-  border-color: #fff;
-  transition: width 350ms ease-in-out;
-  width: 70%;
-}
-
-.signUpButton:hover:before {
-  bottom: auto;
-  top: 0;
-  width: 70%;
-}
-
-.signInButton {
-    letter-spacing: 0;
-    padding: 10px;
-    margin: 10px;
-}
-
-.signInButton:hover,
-.signInButton:active {
-  letter-spacing: 5px;
-}
-
-.signInButton:after,
-.signInButton:before {
-  backface-visibility: hidden;
-  border: 1px solid rgba(#fff, 0);
-  bottom: 0px;
-  content: " ";
-  display: block;
-  margin: 0 auto;
-  position: relative;
-  transition: all 280ms ease-in-out;
-  width: 0;
-}
-
-.signInButton:hover:after,
-.signInButton:hover:before {
-  backface-visibility: hidden;
-  border-color: #fff;
-  transition: width 350ms ease-in-out;
-  width: 70%;
-}
-
-.signInButton:hover:before {
-  bottom: auto;
-  top: 0;
-  width: 70%;
+	background-color: white;
 }
 
 .logOut {
@@ -187,11 +156,6 @@ dd{
     font-size: 200%;
     color: #75A319;
     font-weight: bold;
-}
-
-#action2 .smart{
-	max-width: 400px;
-	margin-left: 120px;
 }
 
 .editButton{

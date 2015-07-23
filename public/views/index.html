@@ -23,10 +23,28 @@
 
 
   <div class='container-fluid'>
-    <nav class="navbar navbar-default" id='nav'>
-      <button type="button" class="btn btn-default btn signUpButton" data-toggle="modal" data-target="#sign-up" role="button">Sign Up</button>
-      <button type="button" class="btn btn-default signInButton" data-toggle="modal" data-target="#sign-in" role="button">Sign In</button>
-    </nav>
+    <div id='nav'>
+      <ul class='nav nav-tabs pull-right'>
+
+      <li>
+        <a class="signUpButton" data-toggle="modal" data-target="#sign-up">Sign Up</a>
+      </li>
+      <li>
+        <a class="signInButton" data-toggle="modal" data-target="#sign-in">Sign In</a>
+      </li>
+      <li class='active'>
+        <a href='#tab1' class='transition'>Goals</a>
+      </li>
+      <li>
+        <a href='#tab2' class='transition'>Workouts</a>
+      </li>
+      <li>
+        <a href='#tab3' class='transition'>Healthy recipes</a>
+      </li>
+      <li>
+        <a href='#tab4' class='transition'>Articles</a>
+      </li>
+    </div>
   </div>
 
 <!--       <input type='checkbox' id='nav-trigger' class='nav-trigger' />
@@ -35,8 +53,8 @@
 <!--       <div class='site-wrap'> -->
 <div class='container'>
   <div class='row'>  
-
-<div class='list well col-sm-4 float left' id='goals'>
+<section id='tab1' class='tab-content active'>
+<div class='list well col-sm-8 col-sm-offset-2' id='goals'>
   <h2>Goals:</h2>
     <form name="myform" action="/api/dropdown" method="GET">
         <select name='goalsSelect'>
@@ -60,8 +78,10 @@
   <br>
   <div class='list' id ='goals-list'></div>
 </div>
+</section>
 
-<div class='well col-sm-7 pull-right' id='action1'>
+<section id='tab2' class='tab-content hide'>
+<div class='well col-sm-8 col-sm-offset-2' id='action1'>
   <h2>Workout of the day:</h2>
     <div id="player"></div>
     <script>
@@ -108,8 +128,10 @@
           }
         </script>
     </div>
+</section>
 
-<div class='well col-sm-7 pull-right' id='action2'>
+<section id='tab3' class='tab-content hide'>
+<div class='well col-sm-8 col-sm-offset-2' id='action2'>
 <!--   <form class='form-horizontal' id='recipeSearch'> -->
   <div class='smart'>
     <h2>How to set SMART goals:</h2>
@@ -133,13 +155,17 @@
       </div>
     </form> -->
 </div>
+</section>
 
-  <div class='well col-sm-7 pull-right' id='action3'>
+<section id='tab4' class='tab-content hide'>
+  <div class='well col-sm-8 col-sm-offset-2' id='action3'>
     <h2>Healthy Reads</h2>
    <!-- start feedwind code --><script type="text/javascript">document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');</script><script type="text/javascript">(function() {var params = {rssmikle_url: "http://www.health.com/health/food-recipes/feed|http://www.health.com/health/diet-fitness/feed",rssmikle_frame_width: "400",rssmikle_frame_height: "400",frame_height_by_article: "0",rssmikle_target: "_blank",rssmikle_font: "Arial, Helvetica, sans-serif",rssmikle_font_size: "12",rssmikle_border: "off",responsive: "off",rssmikle_css_url: "",text_align: "left",text_align2: "left",corner: "off",scrollbar: "on",autoscroll: "off",scrolldirection: "up",scrollstep: "3",mcspeed: "20",sort: "Off",rssmikle_title: "off",rssmikle_title_sentence: "",rssmikle_title_link: "",rssmikle_title_bgcolor: "#0066FF",rssmikle_title_color: "#FFFFFF",rssmikle_title_bgimage: "",rssmikle_item_bgcolor: "#FFFFFF",rssmikle_item_bgimage: "",rssmikle_item_title_length: "55",rssmikle_item_title_color: "#A12D40",rssmikle_item_border_bottom: "on",rssmikle_item_description: "on",item_link: "off",rssmikle_item_description_length: "150",rssmikle_item_description_color: "#666666",rssmikle_item_date: "gl1",rssmikle_timezone: "Etc/GMT",datetime_format: "%b %e, %Y %l:%M:%S %p",item_description_style: "text+tn",item_thumbnail: "full",item_thumbnail_selection: "auto",article_num: "15",rssmikle_item_podcast: "off",keyword_inc: "",keyword_exc: ""};feedwind_show_widget_iframe(params);})();</script><div style="font-size:10px; text-align:center; width:400px;"><a href="http://feed.mikle.com/" target="_blank" style="color:#CCCCCC;">RSS Feed Widget</a><!--Please display the above link in your web page according to Terms of Service.-->
  </div> <!-- end feedwind code -->
 
 </div>
+</section>
+
 </div> <!--row div -->   
 </div> <!--container for page-->       
 </div><!--container for body-->
