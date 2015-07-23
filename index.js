@@ -23,6 +23,7 @@ app.use(express.static(__dirname + '/public'));
 var mongoose = require('mongoose');
 var Goal = require ('./models/goal');
 var User = require('./models/user');
+var Train = require('./models/train');
 // var config = require('./config')
 
 mongoose.connect(
@@ -73,6 +74,11 @@ app.use(session({
 
 app.get('/', function (req, res) {
 	res.sendFile(__dirname + '/public/views/index.html');
+});
+
+app.all("/*", function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
 });
 
 //signup
@@ -256,6 +262,20 @@ app.delete('/api/goals/:id', function(req,res){
 		}
 	});
 });
+
+//selected goal with dropdown
+
+app.get('/api/dropdown', function(req,res){
+	var targetId = (Train.find({goal: req.body.goalsSelect}))._id;
+	console.log(targetId);
+	// Train.find({goal: goal}, function(err, train){
+		if (err){
+			console.log('nope!', err);
+			res.status(500).send(err);
+		} else {
+			res.json(train)
+		}
+	})
 
 
 //food2fork API

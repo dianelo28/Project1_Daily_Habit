@@ -130,22 +130,32 @@ $('#sign-up-form').on('submit', function(e){
 
 // selections with drop down
 
-$('select')
-	.change(function(){
-		var str = "";
-		$( "select option:selected" ).each(function() {
-			str += $(this).text() + " ";
-		});
+// $('select')
+// 	.change(function(){
+// 		var str = "";
+// 		$( "select option:selected" ).each(function() {
+// 			str += $(this).text() + " ";
+// 		});
 
-		console.log(str);
-		var goal = {
-			goal: str,
-			description: 'Start moving more each day and keep a food journal'
-		}
+// 		console.log(str);
 
-		console.log(goal);
-		$list.append($(goalTemplate(goal)));
+// 		// var goal = {
+// 		// 	goal: str,
+// 		// 	description: 'Start moving more each day and keep a food journal'
+// 		// }
 
-	})
-	.change();
+// 		// console.log(goal);
+
+// 		$.ajax({
+// 			url:'/api/dropdown',
+// 			type:'GET',
+// 			data: str,
+// 			success: function(data){
+// 			$list.append($(goalTemplate(str)));
+// 			}
+// 		});
+// 	});
+
+	// .change();
+
 });
