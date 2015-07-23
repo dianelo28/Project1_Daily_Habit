@@ -137,9 +137,18 @@
   width: 70%;
 }
 
+#logInButton{
+	margin-left: 15px;
+}
+
+#sign{
+	margin-left: -300px;
+}
+
 h1{
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 25px;
+	text-align: center;
 }
 
 h2{

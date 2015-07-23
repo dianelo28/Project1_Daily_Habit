@@ -288,27 +288,20 @@
       <div class = 'container'> <!--//container for modal-->
 
         <form class='form-horizontal' id='sign-in-form' method='post' action='/login'> <!--//modal form name-->
-          <div class='form-group text-center'>
-            <h2> Sign in</h2> <!--//header for sign up form-->
+          <div class='form-group'>
+            <h2 id='sign'> Sign in</h2> <!--//header for sign up form-->
           </div>
           <div class='modal-body'>
-            <div class='bold col-sm-4'>
-              Email
-            </div>
-
             <div class='margin-top-20'>
               <input type='text' name='user[email]' class='form-control' placeholder='Email' autofocus>
             </div>
 
-            <div class='bold margin-top-20'>
-              Password
-            </div>
             <div class='margin-top-20'>
               <input type='password' name='user[password]' class='form-control' placeholder='Password'>
             </div>
           </div>
 
-          <div class='form-group'>
+          <div class='form-group' id='logInButton'>
             <input type='submit' value='Log In' class='btn btn-primary'>
           </div>
         </form>  
