@@ -46,7 +46,7 @@ app.set('view engine', 'ejs');
 app.use(session({
 	saveUninitialized: true,
 	resave: true,
-	secret: env.SESSION_SECRET,
+	secret: "gjhgkhjghjkg", //env.SESSION_SECRET,
 	cookie: { maxAge: 60000 }
 }));
 
@@ -134,20 +134,29 @@ app.post('/users', function (req,res){
 
 //log in a user
 
-app.post('/login', function(req,res){
+app.post('/login', function (req, res, callback) {
 	var userData = req.body.user;
 
 	//call authenticate to check if pw is correct
-	User.authenticate(userData.email, userData.password, function(err,user){
-	
-		//session for user
-		console.log(req.session.userId)
-		req.session.userId = user.id
+	User.authenticate(userData.email, userData.password, function(err, user){
+		console.log(err); 
 
-		//redirect to page
-		res.redirect('/profile');
-	});
+		if (err) {  
+			user = null;
+			return callback (null, false);
+		
+		} else {
+			//if password is incorrect, then alert pop up to log-in with right password
+			//session for user
+			console.log(req.session.userId)
+			req.session.userId = user.id
+
+			//redirect to page
+			res.redirect('/profile');
+		};
+	});			
 });
+
 
 app.get('/logout', function (req,res){
 	req.session.userId = null;
