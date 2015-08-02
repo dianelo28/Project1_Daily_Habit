@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 	Goal = require('./goal');
 	// uniqueValidator = require('mongoose-unique-validator');
 
+
 //set User Schema
 
 var UserSchema = new Schema({
@@ -51,11 +52,11 @@ UserSchema.statics.authenticate = function(email, password, callback){
 
 		//error if no user found
 		if (user === null){
-			return callback (user=null);
+			return callback (user === null);
 
 		// if found user, check if pw is correct
 		} else if (user.checkPassword(password)) {
-			callback(null, user);
+			return callback(user === null);
 		}
 	});
 };

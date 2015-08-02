@@ -1,11 +1,11 @@
 .jumbotron{
 	background: url('https://feedbacksolutions.files.wordpress.com/2011/03/week5wordcloud.jpg');
 	text-align: center;
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment:fixed;
 	overflow: hidden;
-	height: 600px;
 }
 
  
@@ -73,7 +73,8 @@
 	background-attachment:fixed;
 	overflow: hidden;
 	margin-top: -10px;
-
+	max-width: 100%;
+	height: auto;
 }
 
 #goals{
